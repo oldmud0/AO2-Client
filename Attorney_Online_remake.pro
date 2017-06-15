@@ -79,7 +79,7 @@ HEADERS  += lobby.h \
     aoevidencedisplay.h
 
 unix:LIBS += -L$$PWD -lbass
-win32:LIBS += "$$PWD/bass.dll"
+win32:LIBS += "$$PWD/bass.lib"
 android:LIBS += -L$$PWD\android\libs\armeabi-v7a\ -lbass
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
