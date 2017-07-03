@@ -1,0 +1,35 @@
+version: 2.4.3
+
+build:
+  only:
+    - master
+    - my-build
+
+environment:
+  qt_version: 5.9
+  mingw_version: 53
+
+  matrix:
+    - name: win32
+      platform: amd64_x86
+      compiler_setup: '"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86'
+      make_tool: nmake
+      qt: $(qt_version)\msvc2015
+      suffix: msvc2015
+
+    - name: win32
+      platform: mingw
+      compiler_setup: ''
+      make_tool: mingw32-make
+      qt: $(qt_version)\mingw$(mingw_version)_32
+      suffix: mingw
+
+init:
+  - set QTDIR=C:\Qt\%qt%\bin
+  - set PATH=%QTDIR%;%PATH%
+  - if %platform%==mingw set PATH=C:\Qt\Tools\mingw%mingw_version%_32\bin;%PATH%
+  - '%compiler_setup%'
+
+build_script:
+  - qmake Attorney_Online_remake.pro
+  - '%make_tool%'
