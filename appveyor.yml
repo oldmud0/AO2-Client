@@ -41,6 +41,11 @@ build_script:
 after_build:
   - dir
   - dir release
-
-before_deploy:
   - copy bass.dll release
+  - windeployqt release
+  - '7z a AO2-Client.zip releases\*.exe releases\*.dll'
+
+artifacts:
+  - path: AO2-Client.zip
+    name: AO2-Client
+    type: zip
