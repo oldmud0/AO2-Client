@@ -43,7 +43,7 @@ after_build:
   - dir release
   - copy bass.dll release
   - windeployqt release
-  - '7z a AO2-Client.zip releases\*.exe releases\*.dll'
+  - '7z a AO2-Client.zip release\*.exe release\*.dll'
 
 artifacts:
   - path: AO2-Client.zip
