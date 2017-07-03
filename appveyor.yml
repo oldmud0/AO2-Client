@@ -13,7 +13,7 @@ environment:
     - name: win32
       platform: amd64_x86
       compiler_setup: '"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86'
-      make_tool: nmake
+      make_tool: jom
       qt: $(qt_version)\msvc2015
       suffix: msvc2015
 
@@ -27,7 +27,7 @@ environment:
 init:
   - set QTDIR=C:\Qt\%qt%\bin
   - set PATH=%QTDIR%;%PATH%
-  - if %platform%==mingw set PATH=C:\Qt\Tools\mingw%mingw_version%_32\bin;C:\MinGW\bin;%PATH%
+  - if %platform%==mingw (set PATH=C:\Qt\Tools\mingw%mingw_version%_32\bin;C:\MinGW\bin;%PATH%) else (set PATH=C:\Qt\Tools\QtCreator\bin;%PATH%)
   - '%compiler_setup%'
 
 before_build:
@@ -35,8 +35,11 @@ before_build:
 
 build_script:
   - qmake Attorney_Online_remake.pro
-  - '%make_tool%'
+  - '%make_tool%' -j4
 
 after_build:
   - dir
   - dir release
+
+before_deploy:
+  - copy bass.dll release
