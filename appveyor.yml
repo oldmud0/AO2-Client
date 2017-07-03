@@ -27,7 +27,8 @@ environment:
 init:
   - set QTDIR=C:\Qt\%qt%\bin
   - set PATH=%QTDIR%;%PATH%
-  - if %platform%==mingw (set PATH=C:\Qt\Tools\mingw%mingw_version%_32\bin;C:\MinGW\bin;%PATH%) else (set PATH=C:\Qt\Tools\QtCreator\bin;%PATH%)
+  - if %platform%==mingw set PATH=C:\Qt\Tools\mingw%mingw_version%_32\bin;C:\MinGW\bin;%PATH%
+  - if not %platform%==mingw set PATH=C:\Qt\Tools\QtCreator\bin;%PATH%
   - '%compiler_setup%'
 
 before_build:
