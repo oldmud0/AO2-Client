@@ -27,7 +27,7 @@ environment:
 init:
   - set QTDIR=C:\Qt\%qt%\bin
   - set PATH=%QTDIR%;%PATH%
-  - if %platform%==mingw set PATH=C:\Qt\Tools\mingw%mingw_version%_32\bin;%PATH%
+  - if %platform%==mingw set PATH=C:\Qt\Tools\mingw%mingw_version%_32\bin;C:\MinGW\bin;%PATH%
   - '%compiler_setup%'
 
 before_build:
@@ -39,3 +39,4 @@ build_script:
 
 after_build:
   - dir
+  - dir release
