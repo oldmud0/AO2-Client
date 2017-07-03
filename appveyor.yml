@@ -45,8 +45,8 @@ after_build:
   - copy README.md release
   - windeployqt release
   - dir release
-  - '7z a AO2-Client-bare.zip .\release\*.exe .\release\bass.dll .\release\README.md .\release\LICENSE'
-  - '7z a AO2-Client-full.zip .\release\* -x!*.obj -x!*.o -x!*.cpp -x!*.h'
+  - '7z a AO2-Client-bare.zip .\release\Attorney_Online_remake.exe .\release\bass.dll .\release\README.md .\release\LICENSE'
+  - '7z a AO2-Client-full.zip .\release\* -x!*.obj -x!*.o -x!*.cpp -x!*.h -x!*.res'
 
 artifacts:
   - path: AO2-Client-bare.zip
