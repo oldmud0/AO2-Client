@@ -31,13 +31,7 @@ init:
   - '%compiler_setup%'
 
 before_build:
-  # Acquire BASS
-  - curl --verbose -H "Referer: https://www.un4seen.com/bass.html" -H "Host: www.un4seen.com" -o bass.zip https://www.un4seen.com/files/bass24.zip
-  - md bass
-  - cd bass
-  - 7z x -y ..\bass.zip >nul
-  - copy bass.dll c\bass.lib ..
-  - cd..
+  - call acquire_bass.cmd
 
 build_script:
   - qmake Attorney_Online_remake.pro
