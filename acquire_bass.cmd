@@ -6,5 +6,6 @@ curl --verbose -H "Referer: https://www.un4seen.com/bass.html" -H "Host: www.un4
 md bass
 cd bass
 7z x -y ..\bass.zip >nul
-copy bass.dll c\bass.lib ..
+copy bass.dll ..
+copy c\bass.lib ..
 cd..
