@@ -16,6 +16,7 @@ environment:
       make_tool: jom
       qt: $(qt_version)\msvc2015
       suffix: msvc2015
+      static: no
 
     - name: win32
       platform: mingw
@@ -23,6 +24,15 @@ environment:
       make_tool: mingw32-make
       qt: $(qt_version)\mingw$(mingw_version)_32
       suffix: mingw
+      static: no
+
+    - name: win32
+      platform: amd64_x86
+      compiler_setup: '"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86'
+      make_tool: jom
+      qt: $(qt_version)\msvc2015
+      suffix: msvc2015
+      static: yes
 
 init:
   - set QTDIR=C:\Qt\%qt%\bin
